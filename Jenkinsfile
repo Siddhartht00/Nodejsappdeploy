@@ -1,5 +1,3 @@
-
-
 pipeline {
     agent any
 
@@ -9,8 +7,14 @@ pipeline {
             steps {
                 bat '''
                     set "PATH=C:\\Program Files\\nodejs;%PATH%"
+
+                    echo Checking Node.js...
                     node -v
+
+                    echo Checking npm...
                     npm -v
+
+                    echo Installing dependencies...
                     npm install
                 '''
             }
@@ -20,7 +24,14 @@ pipeline {
             steps {
                 bat '''
                     set "PATH=C:\\Program Files\\nodejs;%PATH%"
+
+                    echo Starting Node.js application...
+
                     start "" /B cmd /c "npm start > app.log 2>&1"
+
+                    timeout /t 5 /nobreak > nul
+
+                    echo Application deployed successfully!
                 '''
             }
         }
