@@ -1,12 +1,20 @@
 const express = require("express");
 
 const app = express();
+
 const PORT = 3000;
 
-app.get("/", (req, res) => {
-    res.send("Node.js App is running successfully!");
+// Serve frontend
+app.use(express.static("public"));
+
+// Backend API
+app.get("/api/status", (req, res) => {
+    res.json({
+        message: "Backend is working successfully!"
+    });
 });
 
+// Start server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
