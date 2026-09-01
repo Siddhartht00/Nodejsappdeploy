@@ -7,14 +7,13 @@ pipeline {
             steps {
                 bat '''
                     set "PATH=C:\\Program Files\\nodejs;%PATH%"
-
-                    echo Checking Node.js...
+                    echo Node version:
                     node -v
 
-                    echo Checking npm...
+                    echo NPM version:
                     npm -v
 
-                    echo Installing dependencies...
+                    echo Installing dependencies:
                     npm install
                 '''
             }
@@ -24,13 +23,8 @@ pipeline {
             steps {
                 bat '''
                     set "PATH=C:\\Program Files\\nodejs;%PATH%"
-
-                    echo Starting Node.js application...
-
+                    echo Starting application...
                     start "" /B cmd /c "npm start > app.log 2>&1"
-
-                    timeout /t 5 /nobreak > nul
-
                     echo Application deployed successfully!
                 '''
             }
