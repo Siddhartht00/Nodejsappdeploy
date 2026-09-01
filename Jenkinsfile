@@ -3,21 +3,23 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                bat '''
+                    set "PATH=C:\\Program Files\\nodejs;%PATH%"
+                    node -v
+                    npm -v
+                    npm install
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
-                bat 'start /B npm start'
+                bat '''
+                    set "PATH=C:\\Program Files\\nodejs;%PATH%"
+                    npm start
+                '''
             }
         }
     }
