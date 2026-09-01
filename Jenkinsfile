@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
 
@@ -18,7 +20,7 @@ pipeline {
             steps {
                 bat '''
                     set "PATH=C:\\Program Files\\nodejs;%PATH%"
-                    npm start
+                    start "" /B cmd /c "npm start > app.log 2>&1"
                 '''
             }
         }
