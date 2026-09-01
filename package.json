@@ -1,7 +1,7 @@
 {
   "name": "nodejsappdeploy",
   "version": "1.0.0",
-  "description": "Node.js application deployed using Jenkins",
+  "description": "Node.js frontend and backend application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
